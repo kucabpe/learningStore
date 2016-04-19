@@ -128,7 +128,7 @@ namespace learningStore.tables
         #endregion
 
         #region Detail uživatele
-        public Uzivatel select(int id, DatabaseProxy pDb = null)
+        public Uzivatel SelectByID(int id, DatabaseProxy pDb = null)
         {
             Database db;
             if (pDb == null)

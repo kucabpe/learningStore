@@ -9,21 +9,21 @@ using learningStore.database.proxy;
 
 namespace learningStore.tables
 {
-    public class HodnoceniTable
+    public class PredmetTable
     {
         #region SQL
-        private static String SQL_SELECT = "SELECT * FROM hodnoceni;";
-        private static String SQL_SELECT_BYSUB = "SELECT * FROM hodnoceni WHERE pID=@pId;";
+        private static String SQL_SELECT = "SELECT * FROM predmet;";
+        private static String SQL_SELECT_BYID = "SELECT * FROM predmet WHERE pID=@pID;";
         private static String SQL_INSERT =
-            "INSERT INTO hodnoceni (hodnoceni, popis, datum, pID, uzID) VALUES (@hodnoceni, @popis, @datum, @pID, @uzID);";
+            "INSERT INTO predmet (pID, nazev, zkratka, popis, zakonceni, uzID) VALUES (@pID, @nazev, @zkratka, @popis, @zakonceni, @uzID);";
         private static String SQL_UPDATE =
-            "UPDATE hodnoceni SET hodnoceni=@hodnoceni, popis=@popis, datum=@datum WHERE pID=@pID AND uzID=@uzID;";
-        private static string SQL_DELETE =
-            "DELETE FROM hodnoceni WHERE pID=@pID AND uzID=@uzID;";
+            "UPDATE predmet SET pID=@pID, nazev=@nazev, zkratka=@zkratka, popis=@popis, zakonceni=@zakonceni, uzID=@uzID WHERE pID=@pID;";
+        private static String SQL_DELETE =
+            "DELETE FROM predmet WHERE pID=@pID;";
         #endregion
 
         #region CRUD
-        public int Insert(Hodnoceni hodnoceni, DatabaseProxy pDb = null)
+        public int Insert(Predmet predmet, DatabaseProxy pDb = null)
         {
             Database db;
             if (pDb == null)
@@ -37,7 +37,7 @@ namespace learningStore.tables
             }
 
             SqlCommand command = db.CreateCommand(SQL_INSERT);
-            PrepareCommand(command, hodnoceni);
+            PrepareCommand(command, predmet);
             int row = db.ExecuteNonQuery(command);
 
             if (pDb == null)
@@ -48,7 +48,7 @@ namespace learningStore.tables
             return row;
         }
 
-        public int Update(Hodnoceni hodnoceni, DatabaseProxy pDb = null)
+        public int Update(Predmet predmet, DatabaseProxy pDb = null)
         {
             Database db;
             if (pDb == null)
@@ -62,7 +62,7 @@ namespace learningStore.tables
             }
 
             SqlCommand command = db.CreateCommand(SQL_UPDATE);
-            PrepareCommand(command, hodnoceni);
+            PrepareCommand(command, predmet);
             int row = db.ExecuteNonQuery(command);
 
             if (pDb == null)
@@ -73,7 +73,7 @@ namespace learningStore.tables
             return row;
         }
 
-        public Collection<Hodnoceni> Select(DatabaseProxy pDb = null)
+        public Collection<Predmet> Select(DatabaseProxy pDb = null)
         {
             Database db;
             if (pDb == null)
@@ -89,7 +89,7 @@ namespace learningStore.tables
             SqlCommand command = db.CreateCommand(SQL_SELECT);
             SqlDataReader reader = db.Select(command);
 
-            Collection<Hodnoceni> hodnoceni = Read(reader);
+            Collection<Predmet> predmety = Read(reader);
             reader.Close();
 
             if (pDb == null)
@@ -97,10 +97,10 @@ namespace learningStore.tables
                 db.Close();
             }
 
-            return hodnoceni;
+            return predmety;
         }
 
-        public int Delete(Hodnoceni hodnoceni, DatabaseProxy pDb = null)
+        public int Delete(Predmet predmet, DatabaseProxy pDb = null)
         {
             Database db;
             if (pDb == null)
@@ -115,8 +115,7 @@ namespace learningStore.tables
 
             SqlCommand command = db.CreateCommand(SQL_DELETE);
 
-            command.Parameters.AddWithValue("@pID", hodnoceni.Predmet);
-            command.Parameters.AddWithValue("@uzID", hodnoceni.Uzivatel);
+            command.Parameters.AddWithValue("@pID", predmet.PId);
 
             int row = db.ExecuteNonQuery(command);
 
@@ -129,7 +128,7 @@ namespace learningStore.tables
         }
         #endregion
 
-        public Collection<Hodnoceni> SelectBySubject(int pID, DatabaseProxy pDb = null)
+        public Predmet SelectByID(int pID, DatabaseProxy pDb = null)
         {
             Database db;
             if (pDb == null)
@@ -142,51 +141,59 @@ namespace learningStore.tables
                 db = (Database)pDb;
             }
 
-            SqlCommand command = db.CreateCommand(SQL_SELECT_BYSUB);
-
+            SqlCommand command = db.CreateCommand(SQL_SELECT_BYID);
+            
             command.Parameters.AddWithValue("@pID", pID);
             SqlDataReader reader = db.Select(command);
 
-            Collection<Hodnoceni> hodnoceni = Read(reader);
+            Collection<Predmet> predmety = Read(reader);
+            Predmet predmet = null;
             reader.Close();
+
+            if (predmety.Count == 1)
+            {
+                predmet = predmety[0];
+            }
 
             if (pDb == null)
             {
                 db.Close();
             }
 
-            return hodnoceni;
+            return predmet;
         }
 
-        private void PrepareCommand(SqlCommand command, Hodnoceni hodnoceni) 
+        private void PrepareCommand(SqlCommand command, Predmet predmet)
         {
-            command.Parameters.AddWithValue("@hodnoceni", hodnoceni.Ohodnoceni);
-            command.Parameters.AddWithValue("@popis", hodnoceni.Popis);
-            command.Parameters.AddWithValue("@datum", hodnoceni.Datum.ToString("yyyy-MM-dd"));
-            command.Parameters.AddWithValue("@pID", hodnoceni.Predmet.PId);
-            command.Parameters.AddWithValue("@uzID", hodnoceni.Uzivatel.UzId);
+            command.Parameters.AddWithValue("@pID,",predmet.PId);
+            command.Parameters.AddWithValue("@nazev,",predmet.Nazev);
+            command.Parameters.AddWithValue("@zkratka,",predmet.Zkratka);
+            command.Parameters.AddWithValue("@popis,",predmet.Popis);
+            command.Parameters.AddWithValue("@zakonceni,",predmet.Zakonceni);
+            command.Parameters.AddWithValue("@uzID",predmet.Spravce.UzId);
         }
 
-        private Collection<Hodnoceni> Read(SqlDataReader reader)
+        private Collection<Predmet> Read(SqlDataReader reader)
         {
-            Collection<Hodnoceni> hodnoceni = new Collection<Hodnoceni>();
+            Collection<Predmet> predmety= new Collection<Predmet>();
 
             while (reader.Read())
             {
                 int i = -1;
 
-                Hodnoceni h = new Hodnoceni();
-                h.Ohodnoceni = reader.GetInt32(++i);
-                h.Popis = reader.GetString(++i);
-                h.Datum = reader.GetDateTime(++i);
-                int pID = reader.GetInt32(++i);
+                Predmet predmet = new Predmet();
+                predmet.PId = reader.GetInt32(++i);
+                predmet.Nazev = reader.GetString(++i);
+                predmet.Zkratka = reader.GetString(++i);
+                predmet.Popis = reader.GetString(++i);
+                predmet.Zakonceni = reader.GetString(++i);
+                
                 int uzID = reader.GetInt32(++i);
 
-                h.Predmet = new PredmetTable().SelectByID(pID);
-                h.Uzivatel = new UzivatelTable().SelectByID(uzID);
+                predmet.Spravce = new UzivatelTable().SelectByID(uzID);
             }
 
-            return hodnoceni;
+            return predmety;
         }
     }
 }

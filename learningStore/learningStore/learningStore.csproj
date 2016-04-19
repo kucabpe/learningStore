@@ -55,6 +55,7 @@
     <Compile Include="entities\Upozorneni.cs" />
     <Compile Include="entities\Uzivatel.cs" />
     <Compile Include="tables\HodnoceniTable.cs" />
+    <Compile Include="tables\PredmetTable.cs" />
     <Compile Include="tables\UzivatelTable.cs" />
   </ItemGroup>
   <ItemGroup />

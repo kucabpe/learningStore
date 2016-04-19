@@ -12,12 +12,14 @@ namespace learningStore.tables
     public class UzivatelTable
     {
         #region SQL
-        private static String SQL_SELECT = "SELECT * FROM uzivatel";
-        private static String SQL_SELECT_BYID = "SELECT * FROM uzivatel WHERE uzID=@id";
+        private static String SQL_SELECT = "SELECT * FROM uzivatel;";
+        private static String SQL_SELECT_BYID = "SELECT * FROM uzivatel WHERE uzID=@id;";
         private static String SQL_INSERT =
-            "INSERT INTO uzivatel (uzID, login, jmeno, prijmeni, email, registrace, role) VALUES (@id, @login, @jmeno, @prijmeni, @email, @registrace, @role)";
+            "INSERT INTO uzivatel (uzID, login, jmeno, prijmeni, email, registrace, role) VALUES (@id, @login, @jmeno, @prijmeni, @email, @registrace, @role);";
         private static String SQL_UPDATE =
-            "UPDATE uzivatel SET login=@login, jmeno=@jmeno, prijmeni=@primeni, email=@email, role=@role WHERE uzID=@id";
+            "UPDATE uzivatel SET login=@login, jmeno=@jmeno, prijmeni=@primeni, email=@email, role=@role WHERE uzID=@id;";
+        private static String SQL_DELETE =
+            "DELETE FROM uzivatel WHERE uzID=@id;";
         #endregion
 
         #region CRUD
@@ -71,7 +73,7 @@ namespace learningStore.tables
             return row;
         }
 
-        public Collection<Uzivatel> select(DatabaseProxy pDb = null)
+        public Collection<Uzivatel> Select(DatabaseProxy pDb = null)
         {
             Database db;
             if (pDb == null)
@@ -96,6 +98,32 @@ namespace learningStore.tables
             }
 
             return uzivatele;
+        }
+
+        public int Delete(Uzivatel uzivatel, DatabaseProxy pDb = null)
+        {
+            Database db;
+            if (pDb == null)
+            {
+                db = new Database();
+                db.Connect();
+            }
+            else
+            {
+                db = (Database)pDb;
+            }
+
+            SqlCommand command = db.CreateCommand(SQL_DELETE);
+
+            command.Parameters.AddWithValue("@id", uzivatel.UzId);
+            int row = db.ExecuteNonQuery(command);
+
+            if (pDb == null)
+            {
+                db.Close();
+            }
+
+            return row;
         }
         #endregion
 
@@ -162,7 +190,7 @@ namespace learningStore.tables
                     Prijmeni = reader.GetString(++i),
                     Email = reader.GetString(++i),
                     Registrace = reader.GetDateTime(++i),
-                    Role = reader.GetString(i++)
+                    Role = reader.GetString(++i)
                 };
 
                 uzivatele.Add(uz);

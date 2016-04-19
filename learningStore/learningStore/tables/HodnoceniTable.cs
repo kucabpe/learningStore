@@ -7,84 +7,57 @@ using System.Text;
 using learningStore.database.mssql;
 using learningStore.database.proxy;
 
+using System.Data.SqlClient;
+using System.Collections.ObjectModel;
+using learningStore.database.proxy;
+
 namespace learningStore.tables
 {
-    public class HodnoceniTable
+    public class HodnoceniTable : TableProxy<Hodnoceni>
     {
-        #region SQL
-        private static String SQL_SELECT = "SELECT * FROM hodnoceni;";
         private static String SQL_SELECT_BYSUB = "SELECT * FROM hodnoceni WHERE pID=@pId;";
-        private static String SQL_INSERT =
-            "INSERT INTO hodnoceni (hodnoceni, popis, datum, pID, uzID) VALUES (@hodnoceni, @popis, @datum, @pID, @uzID);";
-        private static String SQL_UPDATE =
-            "UPDATE hodnoceni SET hodnoceni=@hodnoceni, popis=@popis, datum=@datum WHERE pID=@pID AND uzID=@uzID;";
-        private static string SQL_DELETE =
-            "DELETE FROM hodnoceni WHERE pID=@pID AND uzID=@uzID;";
-        #endregion
+
+        public HodnoceniTable()
+            : base()
+        {
+            SQL_SELECT = "SELECT * FROM hodnoceni;";
+            SQL_INSERT =
+             "INSERT INTO hodnoceni (hodnoceni, popis, datum, pID, uzID) VALUES (@hodnoceni, @popis, @datum, @pID, @uzID);";
+            SQL_UPDATE =
+             "UPDATE hodnoceni SET hodnoceni=@hodnoceni, popis=@popis WHERE pID=@pID AND uzID=@uzID;";
+            SQL_DELETE = "DELETE FROM hodnoceni WHERE pID=@pID AND uzID=@uzID;";
+        }
 
         #region CRUD
-        public int Insert(Hodnoceni hodnoceni, DatabaseProxy pDb = null)
+        public override int Insert(Hodnoceni t, DatabaseProxy pDb = null)
         {
-            Database db;
-            if (pDb == null)
-            {
-                db = new Database();
-                db.Connect();
-            }
-            else
-            {
-                db = (Database)pDb;
-            }
+            Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_INSERT);
-            PrepareCommand(command, hodnoceni);
+            PrepareCommand(command, t);
             int row = db.ExecuteNonQuery(command);
 
-            if (pDb == null)
-            {
-                pDb.Close();
-            }
+            Disconnecting(pDb);
 
             return row;
         }
 
-        public int Update(Hodnoceni hodnoceni, DatabaseProxy pDb = null)
+        public override int Update(Hodnoceni t, DatabaseProxy pDb = null)
         {
-            Database db;
-            if (pDb == null)
-            {
-                db = new Database();
-                db.Connect();
-            }
-            else
-            {
-                db = (Database)pDb;
-            }
+            Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_UPDATE);
-            PrepareCommand(command, hodnoceni);
+            PrepareCommand(command, t);
             int row = db.ExecuteNonQuery(command);
 
-            if (pDb == null)
-            {
-                pDb.Close();
-            }
+            Disconnecting(pDb);
 
             return row;
         }
 
-        public Collection<Hodnoceni> Select(DatabaseProxy pDb = null)
+        public override Collection<Hodnoceni> Select(DatabaseProxy pDb = null)
         {
-            Database db;
-            if (pDb == null)
-            {
-                db = new Database();
-                db.Connect();
-            }
-            else
-            {
-                db = (Database)pDb;
-            }
+            Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_SELECT);
             SqlDataReader reader = db.Select(command);
@@ -92,38 +65,23 @@ namespace learningStore.tables
             Collection<Hodnoceni> hodnoceni = Read(reader);
             reader.Close();
 
-            if (pDb == null)
-            {
-                db.Close();
-            }
+            Disconnecting(pDb);
 
             return hodnoceni;
         }
 
-        public int Delete(Hodnoceni hodnoceni, DatabaseProxy pDb = null)
+        public override int Delete(Hodnoceni t, DatabaseProxy pDb = null)
         {
-            Database db;
-            if (pDb == null)
-            {
-                db = new Database();
-                db.Connect();
-            }
-            else
-            {
-                db = (Database)pDb;
-            }
+            Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_DELETE);
 
-            command.Parameters.AddWithValue("@pID", hodnoceni.Predmet);
-            command.Parameters.AddWithValue("@uzID", hodnoceni.Uzivatel);
+            command.Parameters.AddWithValue("@pID", t.Predmet.PId);
+            command.Parameters.AddWithValue("@uzID", t.Uzivatel.UzId);
 
             int row = db.ExecuteNonQuery(command);
 
-            if (pDb == null)
-            {
-                db.Close();
-            }
+            Disconnecting(pDb);
 
             return row;
         }
@@ -131,16 +89,7 @@ namespace learningStore.tables
 
         public Collection<Hodnoceni> SelectBySubject(int pID, DatabaseProxy pDb = null)
         {
-            Database db;
-            if (pDb == null)
-            {
-                db = new Database();
-                db.Connect();
-            }
-            else
-            {
-                db = (Database)pDb;
-            }
+            Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_SELECT_BYSUB);
 
@@ -150,24 +99,21 @@ namespace learningStore.tables
             Collection<Hodnoceni> hodnoceni = Read(reader);
             reader.Close();
 
-            if (pDb == null)
-            {
-                db.Close();
-            }
+            Disconnecting(pDb);
 
             return hodnoceni;
         }
 
-        private void PrepareCommand(SqlCommand command, Hodnoceni hodnoceni) 
+        protected override void PrepareCommand(SqlCommand command, Hodnoceni t)
         {
-            command.Parameters.AddWithValue("@hodnoceni", hodnoceni.Ohodnoceni);
-            command.Parameters.AddWithValue("@popis", hodnoceni.Popis);
-            command.Parameters.AddWithValue("@datum", hodnoceni.Datum.ToString("yyyy-MM-dd"));
-            command.Parameters.AddWithValue("@pID", hodnoceni.Predmet.PId);
-            command.Parameters.AddWithValue("@uzID", hodnoceni.Uzivatel.UzId);
+            command.Parameters.AddWithValue("@hodnoceni", t.Ohodnoceni);
+            command.Parameters.AddWithValue("@popis", t.Popis);
+            command.Parameters.AddWithValue("@datum", t.Datum.ToString("yyyy-MM-dd"));
+            command.Parameters.AddWithValue("@pID", t.Predmet.PId);
+            command.Parameters.AddWithValue("@uzID", t.Uzivatel.UzId);
         }
 
-        private Collection<Hodnoceni> Read(SqlDataReader reader)
+        protected override Collection<Hodnoceni> Read(SqlDataReader reader)
         {
             Collection<Hodnoceni> hodnoceni = new Collection<Hodnoceni>();
 
@@ -182,8 +128,11 @@ namespace learningStore.tables
                 int pID = reader.GetInt32(++i);
                 int uzID = reader.GetInt32(++i);
 
-                h.Predmet = new PredmetTable().SelectByID(pID);
-                h.Uzivatel = new UzivatelTable().SelectByID(uzID);
+                /// Neúplné řešení
+                h.Predmet = new Predmet() { PId = pID };
+                h.Uzivatel = new Uzivatel() { UzId = uzID };
+
+                hodnoceni.Add(h);
             }
 
             return hodnoceni;

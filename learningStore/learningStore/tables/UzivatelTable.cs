@@ -9,8 +9,9 @@ using System.Data.SqlClient;
 
 namespace learningStore.tables
 {
-    public class UzivatelTable
+    public class UzivatelTable :  TableProxy<Uzivatel>
     {
+<<<<<<< HEAD
         #region SQL
         private static String SQL_SELECT = "SELECT * FROM uzivatel;";
         private static String SQL_SELECT_BYID = "SELECT * FROM uzivatel WHERE uzID=@id;";
@@ -21,70 +22,54 @@ namespace learningStore.tables
         private static String SQL_DELETE =
             "DELETE FROM uzivatel WHERE uzID=@id;";
         #endregion
+=======
+        private static String SQL_SELECT_BYID = "SELECT * FROM uzivatel WHERE uzID=@uzID";
+
+        public UzivatelTable()
+            : base()
+        {
+            SQL_SELECT = "SELECT * FROM uzivatel;";
+            SQL_INSERT = "INSERT INTO uzivatel (uzID, login, jmeno, prijmeni, email, registrace, role) VALUES (@id, @login, @jmeno, @prijmeni, @email, @registrace, @role);";
+            SQL_UPDATE = "UPDATE uzivatel SET login=@login, jmeno=@jmeno, prijmeni=@prijmeni, email=@email, role=@role WHERE uzID=@uzID;";
+            SQL_DELETE = "DELETE FROM uzivatel WHERE uzID=@uzID;";
+
+        }
+>>>>>>> Generika
 
         #region CRUD
-        public int Insert(Uzivatel uzivatel, DatabaseProxy pDb = null)
+        public override int Insert(Uzivatel t, DatabaseProxy pDb = null)
         {
-            Database db;
-            if (pDb == null)
-            {
-                db = new Database();
-                db.Connect();
-            }
-            else
-            {
-                db = (Database)pDb;
-            }
+            Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_INSERT);
-            PrepareCommand(command, uzivatel);
+            PrepareCommand(command, t);
             int row = db.ExecuteNonQuery(command);
 
-            if (pDb == null)
-            {
-                pDb.Close();
-            }
+            Disconnecting(pDb);
 
             return row;
         }
 
-        public int Update(Uzivatel uzivatel, DatabaseProxy pDb = null)
+        public override int Update(Uzivatel t, DatabaseProxy pDb = null)
         {
-            Database db;
-            if (pDb == null)
-            {
-                db = new Database();
-                db.Connect();
-            }
-            else
-            {
-                db = (Database)pDb;
-            }
+            Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_UPDATE);
-            PrepareCommand(command, uzivatel);
+            PrepareCommand(command, t);
             int row = db.ExecuteNonQuery(command);
 
-            if (pDb == null)
-            {
-                pDb.Close();
-            }
+            Disconnecting(pDb);
 
             return row;
         }
 
+<<<<<<< HEAD
         public Collection<Uzivatel> Select(DatabaseProxy pDb = null)
+=======
+        public override Collection<Uzivatel> Select(DatabaseProxy pDb = null)
+>>>>>>> Generika
         {
-            Database db;
-            if (pDb == null)
-            {
-                db = new Database();
-                db.Connect();
-            }
-            else
-            {
-                db = (Database)pDb;
-            }
+            Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_SELECT);
             SqlDataReader reader = db.Select(command);
@@ -92,14 +77,12 @@ namespace learningStore.tables
             Collection<Uzivatel> uzivatele = Read(reader);
             reader.Close();
 
-            if (pDb == null)
-            {
-                db.Close();
-            }
+            Disconnecting(pDb);
 
             return uzivatele;
         }
 
+<<<<<<< HEAD
         public int Delete(Uzivatel uzivatel, DatabaseProxy pDb = null)
         {
             Database db;
@@ -122,60 +105,64 @@ namespace learningStore.tables
             {
                 db.Close();
             }
+=======
+        public override int Delete(Uzivatel t, DatabaseProxy pDb = null)
+        {
+            Connecting(pDb);
+
+            SqlCommand command = db.CreateCommand(SQL_DELETE);
+
+            command.Parameters.AddWithValue("@uzID", t.UzId);
+            int row = db.ExecuteNonQuery(command);
+
+            Disconnecting(pDb);
+>>>>>>> Generika
 
             return row;
         }
         #endregion
 
+<<<<<<< HEAD
         #region Detail uživatele
         public Uzivatel SelectByID(int id, DatabaseProxy pDb = null)
+=======
+        public Uzivatel SelectByID(int ID, DatabaseProxy pDb = null)
+>>>>>>> Generika
         {
-            Database db;
-            if (pDb == null)
-            {
-                db = new Database();
-                db.Connect();
-            }
-            else
-            {
-                db = (Database)pDb;
-            }
+            Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_SELECT_BYID);
-            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@uzID", ID);
 
             SqlDataReader reader = db.Select(command);
 
             Collection<Uzivatel> uzivatele = Read(reader);
             Uzivatel uzivatel = null;
 
+            reader.Close();
+
             if (uzivatele.Count == 1)
             {
                 uzivatel = uzivatele[0];
             }
-            reader.Close();
 
-            if (pDb == null)
-            {
-                db.Close();
-            }
+            Disconnecting(pDb);
 
             return uzivatel;
         }
-        #endregion
 
-        private void PrepareCommand(SqlCommand command, Uzivatel uzivatel)
+        protected override void PrepareCommand(SqlCommand command, Uzivatel t)
         {
-            command.Parameters.AddWithValue("@id", uzivatel.UzId);
-            command.Parameters.AddWithValue("@login", uzivatel.Login);
-            command.Parameters.AddWithValue("@jmeno", uzivatel.Jmeno);
-            command.Parameters.AddWithValue("@prijmeni", uzivatel.Prijmeni);
-            command.Parameters.AddWithValue("@email", uzivatel.Email);
-            command.Parameters.AddWithValue("@registrace", uzivatel.Registrace.ToString("yyyy-MM-dd"));
-            command.Parameters.AddWithValue("@role", uzivatel.Role);
+            command.Parameters.AddWithValue("@uzID", t.UzId);
+            command.Parameters.AddWithValue("@login", t.Login);
+            command.Parameters.AddWithValue("@jmeno", t.Jmeno);
+            command.Parameters.AddWithValue("@prijmeni", t.Prijmeni);
+            command.Parameters.AddWithValue("@email", t.Email);
+            command.Parameters.AddWithValue("@registrace", t.Registrace.ToString("yyyy-MM-dd"));
+            command.Parameters.AddWithValue("@role", t.Role);
         }
 
-        private Collection<Uzivatel> Read(SqlDataReader reader)
+        protected override Collection<Uzivatel> Read(SqlDataReader reader)
         {
             Collection<Uzivatel> uzivatele = new Collection<Uzivatel>();
 

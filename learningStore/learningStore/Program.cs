@@ -15,9 +15,11 @@ namespace learningStore
     {
         static void Main(string[] args)
         {
-            DatabaseProxy db = new Database();
-            db.Connect();
+//            DatabaseProxy db = new Database();
+//            db.Connect();
 
+
+//            db.Close();
             Console.ReadLine();
         }
     }

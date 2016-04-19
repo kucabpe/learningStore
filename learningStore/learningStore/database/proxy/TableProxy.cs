@@ -14,7 +14,7 @@ namespace learningStore.tables
         protected Database db;
 
         #region SQL
-        protected abstract static String SQL_SELECT;
+        protected static String SQL_SELECT;
         protected static String SQL_INSERT;
         protected static String SQL_UPDATE;
         protected static String SQL_DELETE;
@@ -38,7 +38,7 @@ namespace learningStore.tables
         #endregion
 
         #region Connect/Disconnect
-        protected void Connect(DatabaseProxy pDb = null)
+        protected void Connecting(DatabaseProxy pDb)
         {
             if (pDb == null)
             {
@@ -51,11 +51,11 @@ namespace learningStore.tables
             }
         }
 
-        protected void Disconnect(DatabaseProxy pDb = null)
+        protected void Disconnecting(DatabaseProxy pDb)
         {
             if (pDb == null)
             {
-                pDb.Close();
+                db.Close();
             }
         }
         #endregion

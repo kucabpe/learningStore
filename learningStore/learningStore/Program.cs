@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using learningStore.database;
 using learningStore.database.mssql;
 using learningStore.database.proxy;
+using learningStore.tables;
 
 
 namespace learningStore
@@ -15,6 +17,8 @@ namespace learningStore
         {
             DatabaseProxy db = new Database();
             db.Connect();
+
+            Console.ReadLine();
         }
     }
 }

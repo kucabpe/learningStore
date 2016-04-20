@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+
 using learningStore.database.proxy;
 using learningStore.database.mssql;
 using System.Data.SqlClient;
+using System.Collections.ObjectModel;
 
 namespace learningStore.tables
 {
@@ -20,7 +21,6 @@ namespace learningStore.tables
             SQL_INSERT = "INSERT INTO uzivatel (uzID, login, jmeno, prijmeni, email, registrace, role) VALUES (@id, @login, @jmeno, @prijmeni, @email, @registrace, @role);";
             SQL_UPDATE = "UPDATE uzivatel SET login=@login, jmeno=@jmeno, prijmeni=@prijmeni, email=@email, role=@role WHERE uzID=@uzID;";
             SQL_DELETE = "DELETE FROM uzivatel WHERE uzID=@uzID;";
-
         }
 
 

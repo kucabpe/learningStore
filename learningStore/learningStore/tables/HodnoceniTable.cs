@@ -7,10 +7,6 @@ using System.Text;
 using learningStore.database.mssql;
 using learningStore.database.proxy;
 
-using System.Data.SqlClient;
-using System.Collections.ObjectModel;
-using learningStore.database.proxy;
-
 namespace learningStore.tables
 {
     public class HodnoceniTable : TableProxy<Hodnoceni>

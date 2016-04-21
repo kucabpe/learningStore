@@ -56,7 +56,11 @@
     <Compile Include="entities\Uzivatel.cs" />
     <Compile Include="tables\HodnoceniTable.cs" />
     <Compile Include="database\proxy\TableProxy.cs" />
+    <Compile Include="tables\MaterialTable.cs" />
+    <Compile Include="tables\OborTable.cs" />
     <Compile Include="tables\PredmetTable.cs" />
+    <Compile Include="tables\SkolaTable.cs" />
+    <Compile Include="tables\UpozorneniTable.cs" />
     <Compile Include="tables\UzivatelTable.cs" />
   </ItemGroup>
   <ItemGroup />

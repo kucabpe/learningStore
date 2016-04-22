@@ -13,6 +13,8 @@ namespace learningStore.tables
     public class PredmetTable : TableProxy<Predmet>
     {
 
+        private static String SQL_SELECT_BY_ID = "SELECT * FROM predmet WHERE pID=@pID";
+
         public PredmetTable()
             : base()
         {
@@ -78,6 +80,30 @@ namespace learningStore.tables
         }
 #endregion
 
+        public Predmet SelectByID(int pID)
+        {
+            Connecting(null);
+
+            SqlCommand command = db.CreateCommand(SQL_SELECT_BY_ID);
+            command.Parameters.AddWithValue("@pID", pID);
+
+            SqlDataReader reader = db.Select(command);
+
+            Collection<Predmet> predmety = Read(reader);
+            Predmet predmet = null;
+
+            reader.Close();
+
+            if (predmety.Count == 1)
+            {
+                predmet = predmety[0];
+            }
+
+            Disconnecting(null);
+
+            return predmet;
+        }
+
         protected override void PrepareCommand(SqlCommand command, Predmet t)
         {
             command.Parameters.AddWithValue("@pID", t.PId);
@@ -110,5 +136,6 @@ namespace learningStore.tables
 
             return predmety;
         }
+
     }
 }

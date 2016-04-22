@@ -115,7 +115,7 @@ namespace learningStore.tables
             return materialy;
         }
 
-        protected Material SelectByIdMaterial(int ID, DatabaseProxy pDb = null)
+        public Material SelectByIdMaterial(int ID, DatabaseProxy pDb = null)
         {
 
             Connecting(pDb);
@@ -155,6 +155,10 @@ namespace learningStore.tables
         protected override Collection<Material> Read(SqlDataReader reader)
         {
             Collection<Material> materialy = new Collection<Material>();
+            
+            PredmetTable predmetTable = new PredmetTable();
+            UzivatelTable uzivatelTable = new UzivatelTable();
+
 
             while (reader.Read())
             {
@@ -167,14 +171,15 @@ namespace learningStore.tables
                 material.Datum = reader.GetDateTime(++i);
                 material.Okruh = reader.GetString(++i);
                 material.Overeny = reader.GetInt32(++i);
-                
-                material.Predmet = new Predmet { PId = reader.GetInt32(++i) };
-                material.Uzivatel = new Uzivatel { UzId = reader.GetInt32(++i) };
+
+                material.Predmet = predmetTable.SelectByID(reader.GetInt32(++i));
+                material.Uzivatel = uzivatelTable.SelectByID(reader.GetInt32(++i));
 
                 materialy.Add(material);
             }
 
             return materialy;
         }
+
     }
 }

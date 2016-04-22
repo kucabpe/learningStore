@@ -113,6 +113,9 @@ namespace learningStore.tables
         {
             Collection<Hodnoceni> hodnoceni = new Collection<Hodnoceni>();
 
+            UzivatelTable uzivatelTable = new UzivatelTable();
+            PredmetTable predmetTable = new PredmetTable();
+
             while (reader.Read())
             {
                 int i = -1;
@@ -124,9 +127,8 @@ namespace learningStore.tables
                 int pID = reader.GetInt32(++i);
                 int uzID = reader.GetInt32(++i);
 
-                /// Neúplné řešení
-                h.Predmet = new Predmet() { PId = pID };
-                h.Uzivatel = new Uzivatel() { UzId = uzID };
+                h.Predmet = predmetTable.SelectByID(reader.GetInt32(++i));
+                h.Uzivatel = uzivatelTable.SelectByID(reader.GetInt32(++i));
 
                 hodnoceni.Add(h);
             }

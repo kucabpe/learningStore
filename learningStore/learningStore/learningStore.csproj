@@ -46,7 +46,9 @@
     <Compile Include="entities\Hodnoceni.cs" />
     <Compile Include="entities\Material.cs" />
     <Compile Include="entities\Obor.cs" />
+    <Compile Include="entities\OborSkola.cs" />
     <Compile Include="entities\Predmet.cs" />
+    <Compile Include="entities\PredmetObor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="entities\Provedl.cs" />
@@ -57,8 +59,11 @@
     <Compile Include="tables\HodnoceniTable.cs" />
     <Compile Include="database\proxy\TableProxy.cs" />
     <Compile Include="tables\MaterialTable.cs" />
+    <Compile Include="tables\OborSkolaTable.cs" />
     <Compile Include="tables\OborTable.cs" />
+    <Compile Include="tables\PredmetOborTable.cs" />
     <Compile Include="tables\PredmetTable.cs" />
+    <Compile Include="tables\RevizeTable.cs" />
     <Compile Include="tables\SkolaTable.cs" />
     <Compile Include="tables\UpozorneniTable.cs" />
     <Compile Include="tables\UzivatelTable.cs" />

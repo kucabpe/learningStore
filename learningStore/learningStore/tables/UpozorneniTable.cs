@@ -18,8 +18,8 @@ namespace learningStore.tables
         {
             SQL_SELECT = "SELECT * FROM upozorneni;";
             SQL_INSERT = "INSERT INTO upozorneni (uID, predmet, zprava, datum, od, adresat) VALUES (@uID, @predmet, @zprava, @datum, @od, @adresat);";
-//            SQL_UPDATE = "UPDATE uzivatel SET login=@login, jmeno=@jmeno, prijmeni=@prijmeni, email=@email, role=@role WHERE uzID=@uzID;";
-            SQL_DELETE = "DELETE FROM uzivatel WHERE uID=@uID;";
+            SQL_UPDATE = "";
+            SQL_DELETE = "DELETE FROM upozorneni WHERE uID=@uID;";
         }
 
         #region CRUD
@@ -58,17 +58,64 @@ namespace learningStore.tables
 
         public override int Delete(Upozorneni t, DatabaseProxy pDb = null)
         {
-            throw new NotImplementedException();
+            Connecting(pDb);
+
+            SqlCommand command = db.CreateCommand(SQL_DELETE);
+
+            command.Parameters.AddWithValue("@uzID", t.UzId);
+            int row = db.ExecuteNonQuery(command);
+
+            Disconnecting(pDb);
+            return row;
+        }
+        #endregion
+
+        protected int CleaningNotify(DatabaseProxy pDb = null)
+        {
+            // ...
+            // call procedure
+            return 0;
+        }
+
+        protected int BulkNotify(String message, DatabaseProxy pDb = null)
+        { 
+            /// call procedure
+            return 0;
         }
 
         protected override void PrepareCommand(SqlCommand command, Upozorneni t)
         {
-            throw new NotImplementedException();
+            command.Parameters.AddWithValue("@uID", t.UId);
+            command.Parameters.AddWithValue("@predmet", t.Predmet);
+            command.Parameters.AddWithValue("@zprava", t.Zprava);
+            command.Parameters.AddWithValue("@datum", t.Datum.ToString("yyyy-MM-dd"));
+            command.Parameters.AddWithValue("@od", t.Od.UzId);
+            command.Parameters.AddWithValue("@adresa", t.Adresat.UzId);
         }
 
         protected override Collection<Upozorneni> Read(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            Collection<Upozorneni> upozorneni = new Collection<Upozorneni>();
+
+            while (reader.Read())
+            {
+                int i = -1;
+                Upozorneni u = new Upozorneni();
+
+                u.UId = reader.GetInt32(++i);
+                u.Predmet = reader.GetString(++i);
+                u.Zprava = reader.GetString(++i);
+                u.Datum = reader.GetDateTime(++i);
+
+                UzivatelTable UzivatelTable = new UzivatelTable();
+
+                u.Od = UzivatelTable.SelectByID(reader.GetInt32(++i));
+                u.Adresat = UzivatelTable.SelectByID(reader.GetInt32(++i));
+
+                upozorneni.Add(u);
+            }
+
+            return upozorneni;
         }
     }
 }

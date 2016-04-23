@@ -19,7 +19,7 @@ namespace learningStore.tables
         {
             SQL_SELECT = "SELECT * FROM revize;";
             SQL_INSERT = "INSERT INTO revize (rID, popis, mID, url) VALUES (@rID, @popis, @mID, @url);";
-            SQL_UPDATE = "UPDATE revize SET popis=@popis, mID=mID, url=@url WHERE rID=@rID;";
+            SQL_UPDATE = "UPDATE revize SET popis=@popis, mID=@mID, url=@url WHERE rID=@rID;";
             SQL_DELETE = "DELETE FROM revize WHERE rID=@rID;";
         }
 
@@ -27,7 +27,7 @@ namespace learningStore.tables
         public override int Insert(Revize t, DatabaseProxy pDb = null)
         {
             Connecting(pDb);
-
+            
             SqlCommand command = db.CreateCommand(SQL_INSERT);
             PrepareCommand(command, t);
             int row = db.ExecuteNonQuery(command);
@@ -69,7 +69,7 @@ namespace learningStore.tables
         {
             Connecting(pDb);
 
-            SqlCommand command = db.CreateCommand(SQL_INSERT);
+            SqlCommand command = db.CreateCommand(SQL_DELETE);
             PrepareCommand(command, t);
             int row = db.ExecuteNonQuery(command);
 

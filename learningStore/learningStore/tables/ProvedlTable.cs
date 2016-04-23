@@ -40,8 +40,6 @@ namespace learningStore.tables
         /// <summary>
         /// Není podporováno
         /// </summary>
-        /// <param name="t"></param>
-        /// <param name="pDb"></param>
         /// <returns>-1</returns>
         public override int Update(Provedl t, DatabaseProxy pDb = null)
         {
@@ -77,8 +75,13 @@ namespace learningStore.tables
         }
         #endregion
 
+        /// <summary>
+        /// Funkce 5.5 - Pročištění revizí
+        /// </summary>
         public int CleanRevision()
         {
+            // call procedure
+            return 0;
         }
 
         protected override void PrepareCommand(SqlCommand command, Provedl t)

@@ -78,7 +78,7 @@ namespace learningStore.tables
             Disconnecting(pDb);
             return row;
         }
-#endregion
+        #endregion
 
         public Predmet SelectByID(int pID)
         {
@@ -117,6 +117,7 @@ namespace learningStore.tables
         protected override Collection<Predmet> Read(SqlDataReader reader)
         {
             Collection<Predmet> predmety = new Collection<Predmet>();
+            UzivatelTable ut = new UzivatelTable();
 
             while (reader.Read())
             {
@@ -128,7 +129,7 @@ namespace learningStore.tables
                     Zkratka = reader.GetString(++i),
                     Popis = reader.GetString(++i),
                     Zakonceni = reader.GetString(++i),
-                    Spravce = new Uzivatel() { UzId = reader.GetInt32(++i) }
+                    Spravce = ut.SelectByID(reader.GetInt32(++i))
                 };
 
                 predmety.Add(p);

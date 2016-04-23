@@ -17,18 +17,8 @@ namespace learningStore
         {
             DatabaseProxy db = new Database();
             db.Connect();
+            
 
-            SkolaTable st = new SkolaTable();
-
-            try
-            {
-                db.BeginTransaction();
-
-            }
-            catch (Exception)
-            {
-                db.Rollback();
-            }
 
             db.Close();
             Console.ReadLine();

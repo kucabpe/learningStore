@@ -21,7 +21,7 @@ namespace learningStore.tables
         {
             SQL_SELECT = "SELECT * FROM material;";
             SQL_INSERT = "INSERT INTO material (mID, typ, dokument, datum, okruh, overeny, pID, uzID) VALUES (@mID, @typ, @dokument, @datum, @okruh, @overeny, @pID, @uzID);";
-            SQL_UPDATE = "UPDATE material SET typ=@typ, dokument=@dokument, datum=@datum, okruh=@okruh, overeny=@overeny, pID=@pID, uzID=@uzID  WHERE mID=@mID;";
+            SQL_UPDATE = "UPDATE material SET typ=@typ, dokument=@dokument, datum=@datum, okruh=@okruh, overeny=@overeny WHERE mID=@mID;";
             SQL_DELETE = "DELETE FROM material WHERE mID=@mID;";
         }
 
@@ -81,6 +81,9 @@ namespace learningStore.tables
         }
         #endregion
 
+        /// <summary>
+        /// Funkce 4.3 - Seznam nejnovějších materálů
+        /// </summary>
         protected Collection<Material> SelectByNew(DatabaseProxy pDb = null)
         {
             Connecting(pDb);
@@ -100,6 +103,9 @@ namespace learningStore.tables
             return materialy;
         }
 
+        /// <summary>
+        /// Funkce 4.4 - Seznam neověřených materálů
+        /// </summary>
         protected Collection<Material> SelectByNonVerified(DatabaseProxy pDb = null)
         {
             Connecting(pDb);
@@ -115,13 +121,16 @@ namespace learningStore.tables
             return materialy;
         }
 
-        public Material SelectByIdMaterial(int ID, DatabaseProxy pDb = null)
+        /// <summary>
+        /// Funkce 4.5 - Detail materiálů
+        /// </summary>
+        public Material SelectByIdMaterial(int mID, DatabaseProxy pDb = null)
         {
 
             Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_SELECT_BY_IDMATERIAL);
-            command.Parameters.AddWithValue("@mID", ID);
+            command.Parameters.AddWithValue("@mID", mID);
 
             SqlDataReader reader = db.Select(command);
 

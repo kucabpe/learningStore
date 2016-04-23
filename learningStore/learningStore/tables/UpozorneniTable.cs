@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,9 +36,13 @@ namespace learningStore.tables
             return row;
         }
 
+        /// <summary>
+        /// Není dostupné
+        /// </summary>
+        /// <returns>-1</returns>
         public override int Update(Upozorneni t, DatabaseProxy pDb = null)
         {
-            return 0;
+            return -1;
         }
 
         public override Collection<Upozorneni> Select(DatabaseProxy pDb = null)
@@ -70,6 +74,9 @@ namespace learningStore.tables
         }
         #endregion
 
+        /// <summary>
+        /// Funkce 10.4 - Pročištění upozornění
+        /// </summary>
         protected int CleaningNotify(DatabaseProxy pDb = null)
         {
             // ...
@@ -77,6 +84,9 @@ namespace learningStore.tables
             return 0;
         }
 
+        /// <summary>
+        /// Funkce 10.5 - Hromadné upozornění
+        /// </summary>
         protected int BulkNotify(String message, DatabaseProxy pDb = null)
         { 
             /// call procedure
@@ -96,7 +106,8 @@ namespace learningStore.tables
         protected override Collection<Upozorneni> Read(SqlDataReader reader)
         {
             Collection<Upozorneni> upozorneni = new Collection<Upozorneni>();
-
+            UzivatelTable UzivatelTable = new UzivatelTable();
+            
             while (reader.Read())
             {
                 int i = -1;
@@ -106,9 +117,6 @@ namespace learningStore.tables
                 u.Predmet = reader.GetString(++i);
                 u.Zprava = reader.GetString(++i);
                 u.Datum = reader.GetDateTime(++i);
-
-                UzivatelTable UzivatelTable = new UzivatelTable();
-
                 u.Od = UzivatelTable.SelectByID(reader.GetInt32(++i));
                 u.Adresat = UzivatelTable.SelectByID(reader.GetInt32(++i));
 

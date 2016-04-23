@@ -17,10 +17,8 @@ namespace learningStore.tables
             : base()
         {
             SQL_SELECT = "SELECT * FROM hodnoceni;";
-            SQL_INSERT =
-             "INSERT INTO hodnoceni (hodnoceni, popis, datum, pID, uzID) VALUES (@hodnoceni, @popis, @datum, @pID, @uzID);";
-            SQL_UPDATE =
-             "UPDATE hodnoceni SET hodnoceni=@hodnoceni, popis=@popis WHERE pID=@pID AND uzID=@uzID;";
+            SQL_INSERT = "INSERT INTO hodnoceni (hodnoceni, popis, datum, pID, uzID) VALUES (@hodnoceni, @popis, @datum, @pID, @uzID);";
+            SQL_UPDATE = "UPDATE hodnoceni SET hodnoceni=@hodnoceni, popis=@popis WHERE pID=@pID AND uzID=@uzID;";
             SQL_DELETE = "DELETE FROM hodnoceni WHERE pID=@pID AND uzID=@uzID;";
         }
 
@@ -83,6 +81,9 @@ namespace learningStore.tables
         }
         #endregion
 
+        /// <summary>
+        /// Funkce 2.3 Seznam hodnocení k předmětu
+        /// </summary>
         public Collection<Hodnoceni> SelectBySubject(int pID, DatabaseProxy pDb = null)
         {
             Connecting(pDb);
@@ -124,9 +125,6 @@ namespace learningStore.tables
                 h.Ohodnoceni = reader.GetInt32(++i);
                 h.Popis = reader.GetString(++i);
                 h.Datum = reader.GetDateTime(++i);
-                int pID = reader.GetInt32(++i);
-                int uzID = reader.GetInt32(++i);
-
                 h.Predmet = predmetTable.SelectByID(reader.GetInt32(++i));
                 h.Uzivatel = uzivatelTable.SelectByID(reader.GetInt32(++i));
 

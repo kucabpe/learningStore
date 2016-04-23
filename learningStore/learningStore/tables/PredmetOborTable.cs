@@ -36,9 +36,13 @@ namespace learningStore.tables
             return row;
         }
 
+        /// <summary>
+        /// Není dostupné 
+        /// </summary>
+        /// <returns>-1</returns>
         public override int Update(PredmetObor t, DatabaseProxy pDb = null)
         {
-            return 0;
+            return -1;
         }
 
         public override Collection<PredmetObor> Select(DatabaseProxy pDb = null)

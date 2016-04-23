@@ -28,7 +28,7 @@ namespace learningStore.tables
         {
             Connecting(pDb);
 
-            SqlCommand command = db.CreateCommand(SQL_SELECT);
+            SqlCommand command = db.CreateCommand(SQL_INSERT);
             PrepareCommand(command, t);
 
             int row = db.ExecuteNonQuery(command);
@@ -82,6 +82,9 @@ namespace learningStore.tables
         }
         #endregion
 
+        /// <summary>
+        /// Funkce 6.3 - Seznam aktuálních oborů
+        /// </summary>
         protected Collection<Obor> SelectByCurrentBranch(DatabaseProxy pDb) 
         {
             Connecting(pDb);

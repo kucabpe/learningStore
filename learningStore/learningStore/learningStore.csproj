@@ -49,6 +49,7 @@
     <Compile Include="entities\OborSkola.cs" />
     <Compile Include="entities\Predmet.cs" />
     <Compile Include="entities\PredmetObor.cs" />
+    <Compile Include="function\Function.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="entities\Provedl.cs" />

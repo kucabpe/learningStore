@@ -18,7 +18,7 @@ namespace learningStore.tables
             : base()
         {
             SQL_SELECT = "SELECT * FROM uzivatel;";
-            SQL_INSERT = "INSERT INTO uzivatel (uzID, login, jmeno, prijmeni, email, registrace, role) VALUES (@id, @login, @jmeno, @prijmeni, @email, @registrace, @role);";
+            SQL_INSERT = "INSERT INTO uzivatel (uzID, login, jmeno, prijmeni, email, registrace, role) VALUES (@uzID, @login, @jmeno, @prijmeni, @email, @registrace, @role);";
             SQL_UPDATE = "UPDATE uzivatel SET login=@login, jmeno=@jmeno, prijmeni=@prijmeni, email=@email, role=@role WHERE uzID=@uzID;";
             SQL_DELETE = "DELETE FROM uzivatel WHERE uzID=@uzID;";
         }
@@ -80,12 +80,15 @@ namespace learningStore.tables
         }
         #endregion
 
-        public Uzivatel SelectByID(int ID, DatabaseProxy pDb = null)
+        /// <summary>
+        /// Funkce 1.5 Detail uživatele
+        /// </summary>
+        public Uzivatel SelectByID(int uzID, DatabaseProxy pDb = null)
         {
             Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_SELECT_BYID);
-            command.Parameters.AddWithValue("@uzID", ID);
+            command.Parameters.AddWithValue("@uzID", uzID);
 
             SqlDataReader reader = db.Select(command);
 

@@ -17,7 +17,7 @@ namespace learningStore
 
         public override string ToString()
         {
-            return String.Format("Uzivatel[{0} {1} {2} {3} {4} {5} {6}]", UzId, Login, Jmeno, Prijmeni, Email, Registrace, Role);
+            return String.Format("Uzivatel[{0}, {1}, {2}, {3}, {4}, {5}, {6}]", UzId, Login, Jmeno, Prijmeni, Email, Registrace, Role);
         }
     }
 }

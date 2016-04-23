@@ -15,11 +15,22 @@ namespace learningStore
     {
         static void Main(string[] args)
         {
-//            DatabaseProxy db = new Database();
-//            db.Connect();
+            DatabaseProxy db = new Database();
+            db.Connect();
 
+            SkolaTable st = new SkolaTable();
 
-//            db.Close();
+            try
+            {
+                db.BeginTransaction();
+
+            }
+            catch (Exception)
+            {
+                db.Rollback();
+            }
+
+            db.Close();
             Console.ReadLine();
         }
     }

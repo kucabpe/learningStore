@@ -63,6 +63,7 @@
     <Compile Include="tables\OborTable.cs" />
     <Compile Include="tables\PredmetOborTable.cs" />
     <Compile Include="tables\PredmetTable.cs" />
+    <Compile Include="tables\ProvedlTable.cs" />
     <Compile Include="tables\RevizeTable.cs" />
     <Compile Include="tables\SkolaTable.cs" />
     <Compile Include="tables\UpozorneniTable.cs" />

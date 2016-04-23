@@ -12,12 +12,14 @@ namespace learningStore.tables
 {
     public class RevizeTable : TableProxy<Revize>
     {
+        private static String SQL_SELECT_BYID = "SELECT * FROM revize WHERE rID=@rID;";
+
         public RevizeTable()
             : base()
         {
             SQL_SELECT = "SELECT * FROM revize;";
             SQL_INSERT = "INSERT INTO revize (rID, popis, mID, url) VALUES (@rID, @popis, @mID, @url);";
-            SQL_UPDATE = "UPDATE uzivatel SET popis=@popis, mID=@mID, url=@url WHERE rID=@rID;";
+            SQL_UPDATE = "UPDATE revize SET popis=@popis, mID=mID, url=@url WHERE rID=@rID;";
             SQL_DELETE = "DELETE FROM revize WHERE rID=@rID;";
         }
 
@@ -76,6 +78,30 @@ namespace learningStore.tables
             return row;
         }
         #endregion
+
+        public Revize SelectByID(int rID)
+        {
+            Connecting(null);
+
+            SqlCommand command = db.CreateCommand(SQL_SELECT_BYID);
+            command.Parameters.AddWithValue("@rID", rID);
+
+            SqlDataReader reader = db.Select(command);
+
+            Collection<Revize> revize = Read(reader);
+            reader.Close();
+
+            Revize r = null;
+
+            if (revize.Count == 1)
+            {
+                r = revize[0];
+            }
+
+            Disconnecting(null);
+
+            return r;
+        }
 
         protected override void PrepareCommand(SqlCommand command, Revize t)
         {            

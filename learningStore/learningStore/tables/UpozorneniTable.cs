@@ -62,7 +62,7 @@ namespace learningStore.tables
 
             SqlCommand command = db.CreateCommand(SQL_DELETE);
 
-            command.Parameters.AddWithValue("@uzID", t.UzId);
+            command.Parameters.AddWithValue("@uID", t.UId);
             int row = db.ExecuteNonQuery(command);
 
             Disconnecting(pDb);

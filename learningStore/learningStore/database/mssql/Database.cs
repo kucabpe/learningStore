@@ -22,9 +22,6 @@ namespace learningStore.database.mssql
             Language = "en";
         }
 
-        /// <summary>
-        /// Connect
-        /// </summary>
         public override bool Connect(string conString)
         {
             if (Connection.State != System.Data.ConnectionState.Open)
@@ -36,9 +33,6 @@ namespace learningStore.database.mssql
 
         }
 
-        /// <summary>
-        /// Connect
-        /// </summary>
         public override bool Connect()
         {
             bool ret = true;
@@ -50,42 +44,27 @@ namespace learningStore.database.mssql
             return ret;
         }
 
-        /// <summary>
-        /// Close
-        /// </summary>
         public override void Close()
         {
             Connection.Close();
         }
 
-        /// <summary>
-        /// Begin a transaction.
-        /// </summary>
         public override void BeginTransaction()
         {
             SqlTransaction = Connection.BeginTransaction(IsolationLevel.Serializable);
         }
 
-        /// <summary>
-        /// End a transaction.
-        /// </summary>
         public override void EndTransaction()
         {
             SqlTransaction.Commit();
             Close();
         }
 
-        /// <summary>
-        /// If a transaction is failed call it.
-        /// </summary>
         public override void Rollback()
         {
             SqlTransaction.Rollback();
         }
 
-        /// <summary>
-        /// Insert a record encapulated in the command.
-        /// </summary>
         public int ExecuteNonQuery(SqlCommand command)
         {
             int rowNumber = 0;
@@ -100,9 +79,6 @@ namespace learningStore.database.mssql
             return rowNumber;
         }
 
-        /// <summary>
-        /// Create command
-        /// </summary>
         public SqlCommand CreateCommand(string strCommand)
         {
             SqlCommand command = new SqlCommand(strCommand, Connection);
@@ -114,9 +90,6 @@ namespace learningStore.database.mssql
             return command;
         }
 
-        /// <summary>
-        /// Select encapulated in the command.
-        /// </summary>
         public SqlDataReader Select(SqlCommand command)
         {
             SqlDataReader sqlReader = command.ExecuteReader();

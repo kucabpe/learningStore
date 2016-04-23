@@ -82,7 +82,7 @@ namespace learningStore.tables
         }
         #endregion
 
-        protected override Collection<Obor> SelectByCurrentBranch(DatabaseProxy pDb) 
+        protected Collection<Obor> SelectByCurrentBranch(DatabaseProxy pDb) 
         {
             Connecting(pDb);
 

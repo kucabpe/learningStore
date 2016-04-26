@@ -7,6 +7,7 @@ using learningStore.database.proxy;
 using learningStore.database.mssql;
 using System.Data.SqlClient;
 using System.Collections.ObjectModel;
+using System.Data;
 
 namespace learningStore.tables
 {
@@ -108,9 +109,19 @@ namespace learningStore.tables
             command.Parameters.AddWithValue("@nazev",t.Nazev);
             command.Parameters.AddWithValue("@titul",t.Titul);
             command.Parameters.AddWithValue("@od",t.Od.ToString("yyyy-MM-dd"));
-            
-            string doAttr = (t.Do.HasValue) ? t.Do.Value.ToString("yyyy-MM-dd") : "NULL";
-            command.Parameters.AddWithValue("@do", doAttr);
+
+            SqlParameter doParam = new SqlParameter("@do", SqlDbType.DateTime);
+
+            if (t.Do.HasValue)
+            {
+                doParam.Value = t.Do.Value;
+            }
+            else
+            {
+                doParam.Value = DBNull.Value;
+            }
+
+            command.Parameters.Add(doParam);
         }
 
         protected override Collection<Obor> Read(SqlDataReader reader)

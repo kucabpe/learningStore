@@ -85,7 +85,7 @@ namespace learningStore.tables
         /// <summary>
         /// Funkce 6.3 - Seznam aktuálních oborů
         /// </summary>
-        protected Collection<Obor> SelectByCurrentBranch(DatabaseProxy pDb) 
+        public Collection<Obor> SelectByCurrentBranch(DatabaseProxy pDb) 
         {
             Connecting(pDb);
 

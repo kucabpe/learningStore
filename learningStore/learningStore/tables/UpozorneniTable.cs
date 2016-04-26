@@ -77,20 +77,30 @@ namespace learningStore.tables
         /// <summary>
         /// Funkce 10.4 - Pročištění upozornění
         /// </summary>
-        protected int CleaningNotify(DatabaseProxy pDb = null)
+        public void CleaningNotify(DatabaseProxy pDb = null)
         {
-            // ...
-            // call procedure
-            return 0;
+            Connecting(pDb);
+
+            SqlCommand commandExec = db.CreateCommand("EXEC PROCISTENI_REVIZI");
+            commandExec.ExecuteNonQuery();
+
+            Disconnecting(pDb);
         }
 
         /// <summary>
         /// Funkce 10.5 - Hromadné upozornění
         /// </summary>
-        protected int BulkNotify(String message, DatabaseProxy pDb = null)
-        { 
-            /// call procedure
-            return 0;
+        public void BulkNotify(String subject, String text, DatabaseProxy pDb = null)
+        {
+            Connecting(pDb);
+
+            SqlCommand commandExec = db.CreateCommand("EXEC HROMADNE_UPOZORNENI @subject, @text;");
+            commandExec.Parameters.AddWithValue("@subject", subject);
+            commandExec.Parameters.AddWithValue("@text", text);
+
+            commandExec.ExecuteNonQuery();
+
+            Disconnecting(pDb);
         }
 
         protected override void PrepareCommand(SqlCommand command, Upozorneni t)

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace learningStore.entities
 {
-    public class PredmetObor
+    public class OborPredmet
     {
         public int OId { get; set; }
         public int PId { get; set; }

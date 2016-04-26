@@ -48,7 +48,7 @@
     <Compile Include="entities\Obor.cs" />
     <Compile Include="entities\OborSkola.cs" />
     <Compile Include="entities\Predmet.cs" />
-    <Compile Include="entities\PredmetObor.cs" />
+    <Compile Include="entities\OborPredmet.cs" />
     <Compile Include="function\Function.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,7 +62,7 @@
     <Compile Include="tables\MaterialTable.cs" />
     <Compile Include="tables\OborSkolaTable.cs" />
     <Compile Include="tables\OborTable.cs" />
-    <Compile Include="tables\PredmetOborTable.cs" />
+    <Compile Include="tables\OborPredmetTable.cs" />
     <Compile Include="tables\PredmetTable.cs" />
     <Compile Include="tables\ProvedlTable.cs" />
     <Compile Include="tables\RevizeTable.cs" />

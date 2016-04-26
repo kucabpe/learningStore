@@ -75,14 +75,6 @@ namespace learningStore.tables
         }
         #endregion
 
-        /// <summary>
-        /// Funkce 5.5 - Pročištění revizí
-        /// </summary>
-        public int CleanRevision()
-        {
-            // call procedure
-            return 0;
-        }
 
         protected override void PrepareCommand(SqlCommand command, Provedl t)
         {

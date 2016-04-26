@@ -11,19 +11,19 @@ using learningStore.entities;
 
 namespace learningStore.tables
 {
-    public class PredmetOborTable : TableProxy<PredmetObor>
+    public class OborPredmetTable : TableProxy<OborPredmet>
     {
-        public PredmetOborTable()
+        public OborPredmetTable()
             : base()
         {
-            SQL_SELECT = "SELECT * FROM predmetObor;";
-            SQL_INSERT = "INSERT INTO predmetObor (oID, pID) VALUES (@oID, @pID);";
+            SQL_SELECT = "SELECT * FROM oborPredmet;";
+            SQL_INSERT = "INSERT INTO oborPredmet (oID, pID) VALUES (@oID, @pID);";
             SQL_UPDATE = "";
-            SQL_DELETE = "DELETE FROM predmetObor WHERE oID=@oID, pID=@pID;";
+            SQL_DELETE = "DELETE FROM oborPredmet WHERE oID=@oID, pID=@pID;";
         }
 
         #region CRUD
-        public override int Insert(PredmetObor t, DatabaseProxy pDb = null)
+        public override int Insert(OborPredmet t, DatabaseProxy pDb = null)
         {
             Connecting(pDb);
 
@@ -40,19 +40,19 @@ namespace learningStore.tables
         /// Není dostupné 
         /// </summary>
         /// <returns>-1</returns>
-        public override int Update(PredmetObor t, DatabaseProxy pDb = null)
+        public override int Update(OborPredmet t, DatabaseProxy pDb = null)
         {
             return -1;
         }
 
-        public override Collection<PredmetObor> Select(DatabaseProxy pDb = null)
+        public override Collection<OborPredmet> Select(DatabaseProxy pDb = null)
         {
             Connecting(pDb);
 
             SqlCommand command = db.CreateCommand(SQL_SELECT);
             SqlDataReader reader = db.Select(command);
 
-            Collection<PredmetObor> predmetyVOboru = Read(reader);
+            Collection<OborPredmet> predmetyVOboru = Read(reader);
             reader.Close();
 
             Disconnecting(pDb);
@@ -60,7 +60,7 @@ namespace learningStore.tables
             return predmetyVOboru;
         }
 
-        public override int Delete(PredmetObor t, DatabaseProxy pDb = null)
+        public override int Delete(OborPredmet t, DatabaseProxy pDb = null)
         {
             Connecting(pDb);
 
@@ -74,20 +74,20 @@ namespace learningStore.tables
         }
         #endregion
 
-        protected override void PrepareCommand(SqlCommand command, PredmetObor t)
+        protected override void PrepareCommand(SqlCommand command, OborPredmet t)
         {
             command.Parameters.AddWithValue("@oID", t.OId);
             command.Parameters.AddWithValue("@pID", t.PId);
         }
 
-        protected override Collection<PredmetObor> Read(SqlDataReader reader)
+        protected override Collection<OborPredmet> Read(SqlDataReader reader)
         {
-            Collection<PredmetObor> predmetyVOboru = new Collection<PredmetObor>();
+            Collection<OborPredmet> predmetyVOboru = new Collection<OborPredmet>();
 
             while (reader.Read())
             {
                 int i = -1;
-                PredmetObor po = new PredmetObor()
+                OborPredmet po = new OborPredmet()
                 {
                     OId = reader.GetInt32(++i),
                     PId = reader.GetInt32(++i)

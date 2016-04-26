@@ -101,6 +101,22 @@ namespace learningStore.tables
             return hodnoceni;
         }
 
+        /// <summary>
+        /// Funkce 2.5 - Smazání hodnocení 
+        /// </summary>
+        public void DeleteRating(int uzID, int pID, DatabaseProxy pDb = null)
+        {
+            Connecting(pDb);
+
+            SqlCommand commandExec = db.CreateCommand("EXEC SMAZANI_HODNOCENI @idUser, @idObject;");
+            commandExec.Parameters.AddWithValue("@idUser", uzID);
+            commandExec.Parameters.AddWithValue("@idObject", pID);
+
+            commandExec.ExecuteNonQuery();
+
+            Disconnecting(pDb);
+        }
+
         protected override void PrepareCommand(SqlCommand command, Hodnoceni t)
         {
             command.Parameters.AddWithValue("@hodnoceni", t.Ohodnoceni);

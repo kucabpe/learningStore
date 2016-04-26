@@ -103,6 +103,21 @@ namespace learningStore.tables
             return r;
         }
 
+        /// <summary>
+        /// Procedura 5.5 - Pročištění revizí
+        /// </summary>
+        /// <param name="pDb"></param>
+        public void CleaningRevise(DatabaseProxy pDb = null)
+        {
+            Connecting(pDb);
+
+            SqlCommand commandExec = db.CreateCommand("EXEC PROCISTENI_REVIZI");
+            
+            commandExec.ExecuteNonQuery();
+
+            Disconnecting(pDb);
+        }
+
         protected override void PrepareCommand(SqlCommand command, Revize t)
         {            
             command.Parameters.AddWithValue("@rID", t.RId);

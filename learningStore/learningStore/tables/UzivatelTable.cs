@@ -13,6 +13,7 @@ namespace learningStore.tables
     public class UzivatelTable :  TableProxy<Uzivatel>
     {
         private static String SQL_SELECT_BYID = "SELECT * FROM uzivatel WHERE uzID=@uzID";
+        private static String SQL_SELECT_STUDENTS = "SELECT * FROM uzivatel WHERE role like 'student'";
 
         public UzivatelTable()
             : base()
@@ -105,6 +106,25 @@ namespace learningStore.tables
             Disconnecting(pDb);
 
             return uzivatel;
+        }
+
+        /// <summary>
+        /// Výběr studentů
+        /// </summary>
+        public Collection<Uzivatel> SelectStudents(DatabaseProxy pDb = null)
+        {
+            Connecting(pDb);
+
+            SqlCommand command = db.CreateCommand(SQL_SELECT_STUDENTS);
+
+            SqlDataReader reader = db.Select(command);
+
+            Collection<Uzivatel> uzivatele = Read(reader);
+            reader.Close();
+
+            Disconnecting(pDb);
+
+            return uzivatele;
         }
 
         protected override void PrepareCommand(SqlCommand command, Uzivatel t)

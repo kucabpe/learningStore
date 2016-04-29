@@ -15,6 +15,7 @@ namespace learningStore.tables
         private static String SQL_SELECT_BY_NEW = "SELECT * FROM material WHERE datum > @dateBefYear";
         private static String SQL_SELECT_BY_NON_VERIFIED = "SELECT * FROM material WHERE overeny = 0";
         private static String SQL_SELECT_BY_IDMATERIAL = "SELECT * FROM material WHERE mID = @mID";
+        private static String SQL_SELECT_LAST_ID = "select MAX(mID) [lastID] from material";
 
         public MaterialTable() :
             base()
@@ -147,6 +148,22 @@ namespace learningStore.tables
             Disconnecting(pDb);
 
             return material;
+        }
+
+        public int SelectLastId(DatabaseProxy pDb = null)
+        {
+            Connecting(pDb);
+
+            SqlCommand command = db.CreateCommand(SQL_SELECT_LAST_ID);
+
+            SqlDataReader reader = db.Select(command);
+
+            reader.Read();
+            int LastId = reader.GetInt32(0);
+
+            Disconnecting(pDb);
+
+            return LastId+1;
         }
 
         protected override void PrepareCommand(SqlCommand command, Material t)

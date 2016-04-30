@@ -70,16 +70,6 @@ namespace Application
             UzivatelBox.Text = Material.Uzivatel.Login;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MaterialDetail_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void ulozit_Click(object sender, EventArgs e)
         {
             Save();

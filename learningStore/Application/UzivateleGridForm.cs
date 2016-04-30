@@ -77,11 +77,6 @@ namespace Application
             }
         }
 
-        private void uzivateleGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void uzivateleGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 6)

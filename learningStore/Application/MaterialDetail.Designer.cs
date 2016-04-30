@@ -355,7 +355,6 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "Přidat revizi";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MaterialDetail
             // 
@@ -381,7 +380,6 @@
             this.Controls.Add(this.shapeContainer1);
             this.Name = "MaterialDetail";
             this.Text = "Materiál";
-            this.Load += new System.EventHandler(this.MaterialDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -70,11 +70,6 @@ namespace Application
             form.Show();
         }
 
-        private void detailToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pridatMaterialToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -85,24 +80,10 @@ namespace Application
                         
         }
 
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void uzivateleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
         private void seznamUzivateluToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UzivateleGridForm form = getUzivateleGridForm();
             form.Show();
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

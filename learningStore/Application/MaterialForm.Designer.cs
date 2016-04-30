@@ -251,7 +251,6 @@
             this.Controls.Add(this.shapeContainer1);
             this.Name = "MaterialForm";
             this.Text = "Formulář";
-            this.Load += new System.EventHandler(this.MaterialDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

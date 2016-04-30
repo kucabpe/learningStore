@@ -48,14 +48,5 @@ namespace Application
                 dataGridView1.Rows.Add(uzivatel, date, url);
             }
         }
-
-        private void MaterialDetail_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
     }
 }

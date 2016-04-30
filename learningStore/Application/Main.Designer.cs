@@ -84,7 +84,6 @@
             this.uživateleToolStripMenuItem.Name = "uživateleToolStripMenuItem";
             this.uživateleToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.uživateleToolStripMenuItem.Text = "Uživatelé";
-            this.uživateleToolStripMenuItem.Click += new System.EventHandler(this.uzivateleToolStripMenuItem_Click);
             // 
             // seznamUživatelůToolStripMenuItem
             // 
@@ -113,7 +112,6 @@
             this.progressBar1.TabIndex = 4;
             this.progressBar1.UseWaitCursor = true;
             this.progressBar1.Visible = false;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // loadingLabel
             // 

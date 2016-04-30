@@ -26,11 +26,6 @@ namespace Application
             MaterialTable = new MaterialTable();
         }
 
-        private void MaterialyForm_Load(object sender, EventArgs e)
-        {
-            //RefreshData();
-        }
-
         private void ShowData()
         {
             materialGridView.AllowUserToAddRows = false;
@@ -91,16 +86,6 @@ namespace Application
             ShowData();
         }
 
-        private void MaterialyForm_Shown(object sender, EventArgs e)
-        {
-            //RefreshData();
-        }
-
-        private void materialGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void materialGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -121,9 +106,5 @@ namespace Application
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

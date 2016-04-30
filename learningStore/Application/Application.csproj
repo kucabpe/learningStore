@@ -85,6 +85,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UzivateleGridForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UzivateleGridForm.Designer.cs">
+      <DependentUpon>UzivateleGridForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dialog\BadDateNotify.resx">
       <DependentUpon>BadDateNotify.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +118,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UzivateleGridForm.resx">
+      <DependentUpon>UzivateleGridForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

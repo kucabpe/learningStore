@@ -18,7 +18,7 @@ namespace Application
             InitializeComponent();           
         }
 
-        private MaterialyGridForm getMaterialyForm()
+        private MaterialyGridForm getMaterialyGridForm()
         {
             MaterialyGridForm form = new MaterialyGridForm();
             form.MdiParent = this;
@@ -41,10 +41,32 @@ namespace Application
             return form;
         }
 
+        private UzivateleGridForm getUzivateleGridForm()
+        {
+            UzivateleGridForm form = new UzivateleGridForm();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+
+            Thread thread = new Thread(new ThreadStart(form.RefreshData));
+
+            thread.Start();
+
+            loadingLabel.Visible = true;
+            progressBar1.Visible = true;
+
+            while (thread.IsAlive) Refresh();
+
+            thread.Join();
+
+            loadingLabel.Visible = false;
+            progressBar1.Visible = false;
+
+            return form;
+        }
+
         private void seznamMaterialuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            MaterialyGridForm form = getMaterialyForm();
+            MaterialyGridForm form = getMaterialyGridForm();
             form.Show();
         }
 
@@ -70,12 +92,12 @@ namespace Application
 
         private void uzivateleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void seznamUzivateluToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            UzivateleGridForm form = getUzivateleGridForm();
+            form.Show();
         }
     }
 }

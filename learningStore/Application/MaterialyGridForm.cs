@@ -86,8 +86,6 @@ namespace Application
         {
             
             Materials = MaterialTable.Select();
-            BindingList<Material> source = new BindingList<Material>(Materials);
-
             materialGridView.Rows.Clear();
 
             ShowData();

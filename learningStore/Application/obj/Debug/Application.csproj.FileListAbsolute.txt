@@ -13,4 +13,4 @@ C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\obj\Debug\
 C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\obj\Debug\Application.MaterialForm.resources
 C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\obj\Debug\Application.MaterialyGridForm.resources
 C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\bin\Debug\learningStore.dll
-C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\obj\Debug\Application.Dialog.AddRevisionNotify.resources
+C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\obj\Debug\Application.UzivateleGridForm.resources

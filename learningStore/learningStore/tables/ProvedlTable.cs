@@ -13,12 +13,12 @@ namespace learningStore.tables
 {
     public class ProvedlTable : TableProxy<Provedl>
     {
-
+        private static String SQL_SELECT_BY_ID_REVISION = "SELECT * FROM provedl WHERE rID = @rID";
         public ProvedlTable()
             : base() 
         {
             SQL_SELECT = "SELECT * FROM provedl;";
-            SQL_INSERT = "INSERT INTO provedl (datum, uzID, rID) VALUES (@datum, @uzID, @rID);";
+            SQL_INSERT = "INSERT INTO provedl (rID, datum, uzID, rID) VALUES (@rID, @datum, @uzID, @rID);";
             SQL_UPDATE = "";
             SQL_DELETE = "DELETE FROM provedl WHERE datum=@datum, uzID=@uzID, rID=@rID;";
         }
@@ -75,7 +75,24 @@ namespace learningStore.tables
         }
         #endregion
 
+        public Collection<Provedl> SelectByRevision(int rID, DatabaseProxy pDb = null)
+        {
+            Connecting(pDb);
 
+            SqlCommand command = db.CreateCommand(SQL_SELECT_BY_ID_REVISION);
+            command.Parameters.AddWithValue("@rID", rID);
+
+            SqlDataReader reader = db.Select(command);
+
+            Collection<Provedl> revize = Read(reader);
+
+            reader.Close();
+
+            Disconnecting(pDb);
+
+            return revize;
+        }
+        
         protected override void PrepareCommand(SqlCommand command, Provedl t)
         {
             command.Parameters.AddWithValue("@datum", t.Datum.ToString("yyyy-MM-dd"));
@@ -95,6 +112,7 @@ namespace learningStore.tables
                 int i = -1;
 
                 Provedl p = new Provedl();
+
                 p.Datum = reader.GetDateTime(++i);
                 p.Uzivatel = uzivatelTable.SelectByID(reader.GetInt32(++i));
                 p.Revize = revizeTable.SelectByID(reader.GetInt32(++i));

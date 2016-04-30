@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -36,6 +36,7 @@
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,17 +53,29 @@
     <Compile Include="Dialog\BadDateNotify.Designer.cs">
       <DependentUpon>BadDateNotify.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\InvalidInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\InvalidInput.Designer.cs">
+      <DependentUpon>InvalidInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="MaterialDetail.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MaterialDetail.Designer.cs">
       <DependentUpon>MaterialDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="MaterialyForm.cs">
+    <Compile Include="MaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MaterialyForm.Designer.cs">
-      <DependentUpon>MaterialyForm.cs</DependentUpon>
+    <Compile Include="MaterialForm.Designer.cs">
+      <DependentUpon>MaterialForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialyGridForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialyGridForm.Designer.cs">
+      <DependentUpon>MaterialyGridForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -75,11 +88,17 @@
     <EmbeddedResource Include="Dialog\BadDateNotify.resx">
       <DependentUpon>BadDateNotify.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\InvalidInput.resx">
+      <DependentUpon>InvalidInput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MaterialDetail.resx">
       <DependentUpon>MaterialDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MaterialyForm.resx">
-      <DependentUpon>MaterialyForm.cs</DependentUpon>
+    <EmbeddedResource Include="MaterialForm.resx">
+      <DependentUpon>MaterialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialyGridForm.resx">
+      <DependentUpon>MaterialyGridForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

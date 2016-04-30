@@ -35,13 +35,16 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.loadingLabel = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.uživateleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seznamUživatelůToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.detailToolStripMenuItem});
+            this.detailToolStripMenuItem,
+            this.uživateleToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
@@ -104,6 +107,22 @@
             this.progressBar1.UseWaitCursor = true;
             this.progressBar1.Visible = false;
             // 
+            // uživateleToolStripMenuItem
+            // 
+            this.uživateleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seznamUživatelůToolStripMenuItem});
+            this.uživateleToolStripMenuItem.Name = "uživateleToolStripMenuItem";
+            this.uživateleToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.uživateleToolStripMenuItem.Text = "Uživatelé";
+            this.uživateleToolStripMenuItem.Click += new System.EventHandler(this.uzivateleToolStripMenuItem_Click);
+            // 
+            // seznamUživatelůToolStripMenuItem
+            // 
+            this.seznamUživatelůToolStripMenuItem.Name = "seznamUživatelůToolStripMenuItem";
+            this.seznamUživatelůToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.seznamUživatelůToolStripMenuItem.Text = "Seznam uživatelů";
+            this.seznamUživatelůToolStripMenuItem.Click += new System.EventHandler(this.seznamUzivateluToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,6 +152,8 @@
         private System.Windows.Forms.ToolStripMenuItem přidatMateriálToolStripMenuItem;
         private System.Windows.Forms.Label loadingLabel;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolStripMenuItem uživateleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seznamUživatelůToolStripMenuItem;
     }
 }
 

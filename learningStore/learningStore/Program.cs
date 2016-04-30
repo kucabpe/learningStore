@@ -16,7 +16,6 @@
 //            DatabaseProxy db = new Database();
 //            db.Connect();
 
-
 //            #region Vytvoření uživatelů
 
 //            Uzivatel u1 = new Uzivatel()

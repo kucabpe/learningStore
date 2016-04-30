@@ -14,12 +14,13 @@ using learningStore.tables;
 
 namespace Application
 {
-    public partial class MaterialyForm : Form
+    public partial class MaterialyGridForm : Form
     {
         private MaterialTable MaterialTable;
         private Collection<Material> Materials { get; set; }
+        private Icon treeIcon = new Icon(@"../../detail.ico");
 
-        public MaterialyForm()
+        public MaterialyGridForm()
         {
             InitializeComponent();
             MaterialTable = new MaterialTable();
@@ -66,6 +67,14 @@ namespace Application
             materialGridView.Columns[i].Name = "Datum nahrání";
             materialGridView.Columns[i].Width = 120;
             materialGridView.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            i += 1; 
+
+            DataGridViewImageColumn iconColumn = new DataGridViewImageColumn();
+            iconColumn.Image = treeIcon.ToBitmap();
+            iconColumn.HeaderText = "Detail";
+            iconColumn.Width = 60;
+            iconColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            materialGridView.Columns.Insert(i, iconColumn);
 
             foreach (var item in Materials)
             {
@@ -82,7 +91,6 @@ namespace Application
             materialGridView.Rows.Clear();
 
             ShowData();
-
         }
 
         private void MaterialyForm_Shown(object sender, EventArgs e)
@@ -100,10 +108,24 @@ namespace Application
             if (e.RowIndex >= 0)
             {
                 int id = (int)materialGridView.Rows[e.RowIndex].Cells["id"].Value;
-                MaterialDetail formMaterialDetail = new MaterialDetail(id);
-                formMaterialDetail.ShowDialog();
-                RefreshData();
+
+                if (e.ColumnIndex != 7)
+                {
+                    MaterialForm formMaterialDetail = new MaterialForm(id);
+                    formMaterialDetail.ShowDialog();
+                    RefreshData();
+                }
+                else if (e.ColumnIndex == 7)
+                {
+                    MaterialDetail formMaterialDetail = new MaterialDetail(id);
+                    formMaterialDetail.Show();
+                }
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

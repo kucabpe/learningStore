@@ -18,9 +18,9 @@ namespace Application
             InitializeComponent();           
         }
 
-        private MaterialyForm getMaterialyForm()
+        private MaterialyGridForm getMaterialyForm()
         {
-            MaterialyForm form = new MaterialyForm();
+            MaterialyGridForm form = new MaterialyGridForm();
             form.MdiParent = this;
             form.WindowState = FormWindowState.Maximized;
 
@@ -44,7 +44,7 @@ namespace Application
         private void seznamMaterialuToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            MaterialyForm form = getMaterialyForm();
+            MaterialyGridForm form = getMaterialyForm();
             form.Show();
         }
 
@@ -56,7 +56,7 @@ namespace Application
         private void pridatMaterialToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            MaterialDetail form = new MaterialDetail(-1);
+            MaterialForm form = new MaterialForm(-1);
             form.MdiParent = this;
             form.WindowState = FormWindowState.Maximized;
             form.Show();
@@ -64,6 +64,16 @@ namespace Application
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void uzivateleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void seznamUzivateluToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

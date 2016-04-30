@@ -1,6 +1,6 @@
 ﻿namespace Application
 {
-    partial class MaterialyForm
+    partial class MaterialyGridForm
     {
         /// <summary>
         /// Required designer variable.

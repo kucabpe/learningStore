@@ -28,14 +28,14 @@ namespace Application
 
             thread.Start();
 
-            loadingLabel.Visible = true;
+            flowLayoutPanel1.Visible = true;
             progressBar1.Visible = true;
 
             while (thread.IsAlive) Refresh();
 
             thread.Join();
 
-            loadingLabel.Visible = false;
+            flowLayoutPanel1.Visible = false;
             progressBar1.Visible = false;
 
             return form;
@@ -51,14 +51,14 @@ namespace Application
 
             thread.Start();
 
-            loadingLabel.Visible = true;
+            flowLayoutPanel1.Visible = true;
             progressBar1.Visible = true;
 
             while (thread.IsAlive) Refresh();
 
             thread.Join();
 
-            loadingLabel.Visible = false;
+            flowLayoutPanel1.Visible = false;
             progressBar1.Visible = false;
 
             return form;
@@ -98,6 +98,11 @@ namespace Application
         {
             UzivateleGridForm form = getUzivateleGridForm();
             form.Show();
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

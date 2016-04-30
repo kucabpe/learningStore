@@ -53,6 +53,12 @@
     <Compile Include="Dialog\BadDateNotify.Designer.cs">
       <DependentUpon>BadDateNotify.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\ChangeSaved.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\ChangeSaved.Designer.cs">
+      <DependentUpon>ChangeSaved.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\InvalidInput.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UzivatelDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UzivatelDetail.Designer.cs">
+      <DependentUpon>UzivatelDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="UzivateleGridForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +105,9 @@
     </Compile>
     <EmbeddedResource Include="Dialog\BadDateNotify.resx">
       <DependentUpon>BadDateNotify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\ChangeSaved.resx">
+      <DependentUpon>ChangeSaved.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\InvalidInput.resx">
       <DependentUpon>InvalidInput.cs</DependentUpon>
@@ -118,6 +133,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UzivatelDetail.resx">
+      <DependentUpon>UzivatelDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UzivateleGridForm.resx">
       <DependentUpon>UzivateleGridForm.cs</DependentUpon>
     </EmbeddedResource>

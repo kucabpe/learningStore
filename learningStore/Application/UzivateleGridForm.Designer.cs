@@ -40,6 +40,8 @@
             this.uzivateleGridView.Name = "uzivateleGridView";
             this.uzivateleGridView.Size = new System.Drawing.Size(563, 438);
             this.uzivateleGridView.TabIndex = 0;
+            this.uzivateleGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uzivateleGridView_CellContentClick);
+            this.uzivateleGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uzivateleGridView_CellContentDoubleClick);
             // 
             // UzivateleGridForm
             // 
@@ -48,7 +50,7 @@
             this.ClientSize = new System.Drawing.Size(563, 438);
             this.Controls.Add(this.uzivateleGridView);
             this.Name = "UzivateleGridForm";
-            this.Text = "UzivateleGridForm";
+            this.Text = "Seznam uživatelů";
             ((System.ComponentModel.ISupportInitialize)(this.uzivateleGridView)).EndInit();
             this.ResumeLayout(false);
 

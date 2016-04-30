@@ -226,7 +226,7 @@
             this.uzivatelComboBox.Size = new System.Drawing.Size(121, 28);
             this.uzivatelComboBox.TabIndex = 6;
             // 
-            // MaterialDetail
+            // MaterialForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -249,8 +249,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.shapeContainer1);
-            this.Name = "MaterialDetail";
-            this.Text = "MaterialDetail";
+            this.Name = "MaterialForm";
+            this.Text = "Formulář";
             this.Load += new System.EventHandler(this.MaterialDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

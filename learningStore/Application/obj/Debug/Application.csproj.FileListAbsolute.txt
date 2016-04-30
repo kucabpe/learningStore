@@ -14,3 +14,5 @@ C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\obj\Debug\
 C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\obj\Debug\Application.MaterialyGridForm.resources
 C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\bin\Debug\learningStore.dll
 C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\obj\Debug\Application.UzivateleGridForm.resources
+C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\obj\Debug\Application.UzivatelDetail.resources
+C:\Users\Petr\Desktop\DAIS\dais projekt\orm\learningStore\Application\obj\Debug\Application.Dialog.ChangeSaved.resources

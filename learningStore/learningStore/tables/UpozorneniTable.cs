@@ -13,6 +13,9 @@ namespace learningStore.tables
 {
     public class UpozorneniTable : TableProxy<Upozorneni>
     {
+
+        private static String SQL_SELECT_BY_ADRESAT = "SELECT * FROM upozorneni WHERE adresat = @adresat";
+
         public UpozorneniTable()
             : base()
         {
@@ -101,6 +104,23 @@ namespace learningStore.tables
             commandExec.ExecuteNonQuery();
 
             Disconnecting(pDb);
+        }
+
+        public Collection<Upozorneni> SelectByAdresat(int adresatId, DatabaseProxy pDb = null)
+        { 
+            Connecting(pDb);
+
+            SqlCommand command = db.CreateCommand(SQL_SELECT_BY_ADRESAT);
+            command.Parameters.AddWithValue("@adresat", adresatId);
+
+            SqlDataReader reader = db.Select(command);
+
+            Collection<Upozorneni> upozorneni = Read(reader);
+            reader.Close();
+
+            Disconnecting(pDb);
+
+            return upozorneni;
         }
 
         protected override void PrepareCommand(SqlCommand command, Upozorneni t)

@@ -1,6 +1,6 @@
 ﻿namespace Application.Dialog
 {
-    partial class InvalidInput
+    partial class ChangeSaved
     {
         /// <summary>
         /// Required designer variable.
@@ -34,22 +34,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(44, 43);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label1.Location = new System.Drawing.Point(52, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 25);
+            this.label1.Size = new System.Drawing.Size(173, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Neplatné vstupní data";
+            this.label1.Text = "Změny uloženy";
             // 
-            // InvalidInput
+            // ChangeSaved
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 117);
+            this.ClientSize = new System.Drawing.Size(328, 106);
             this.Controls.Add(this.label1);
-            this.Name = "InvalidInput";
-            this.Text = "Chyba";
+            this.Name = "ChangeSaved";
+            this.Text = "Upozornění";
             this.ResumeLayout(false);
             this.PerformLayout();
 

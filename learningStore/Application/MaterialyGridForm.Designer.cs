@@ -43,14 +43,14 @@
             this.materialGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.materialGridView_CellContentClick);
             this.materialGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.materialGridView_CellDoubleClick);
             // 
-            // MaterialyForm
+            // MaterialyGridForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 389);
             this.Controls.Add(this.materialGridView);
-            this.Name = "MaterialyForm";
-            this.Text = "Form1";
+            this.Name = "MaterialyGridForm";
+            this.Text = "Seznam materiálu";
             this.Shown += new System.EventHandler(this.MaterialyForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.materialGridView)).EndInit();
             this.ResumeLayout(false);

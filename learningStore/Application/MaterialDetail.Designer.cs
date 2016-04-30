@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.nazevLabel = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape9 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape8 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.label2 = new System.Windows.Forms.Label();
-            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.dostupneLabel = new System.Windows.Forms.Label();
             this.TypLabel = new System.Windows.Forms.Label();
             this.DokumentLabel = new System.Windows.Forms.Label();
@@ -47,18 +51,14 @@
             this.NahralLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape8 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape9 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.Provedllabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.provedlCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.odkazCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -92,6 +92,70 @@
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
+            // lineShape9
+            // 
+            this.lineShape9.Name = "lineShape9";
+            this.lineShape9.X1 = 413;
+            this.lineShape9.X2 = 413;
+            this.lineShape9.Y1 = 337;
+            this.lineShape9.Y2 = 490;
+            // 
+            // lineShape8
+            // 
+            this.lineShape8.Name = "lineShape8";
+            this.lineShape8.X1 = 36;
+            this.lineShape8.X2 = 413;
+            this.lineShape8.Y1 = 337;
+            this.lineShape8.Y2 = 337;
+            // 
+            // lineShape7
+            // 
+            this.lineShape7.Name = "lineShape7";
+            this.lineShape7.X1 = 36;
+            this.lineShape7.X2 = 36;
+            this.lineShape7.Y1 = 338;
+            this.lineShape7.Y2 = 490;
+            // 
+            // lineShape6
+            // 
+            this.lineShape6.Name = "lineShape6";
+            this.lineShape6.X1 = 36;
+            this.lineShape6.X2 = 413;
+            this.lineShape6.Y1 = 491;
+            this.lineShape6.Y2 = 491;
+            // 
+            // lineShape4
+            // 
+            this.lineShape4.Name = "lineShape4";
+            this.lineShape4.X1 = 414;
+            this.lineShape4.X2 = 414;
+            this.lineShape4.Y1 = 91;
+            this.lineShape4.Y2 = 284;
+            // 
+            // lineShape5
+            // 
+            this.lineShape5.Name = "lineShape5";
+            this.lineShape5.X1 = 37;
+            this.lineShape5.X2 = 414;
+            this.lineShape5.Y1 = 284;
+            this.lineShape5.Y2 = 284;
+            // 
+            // lineShape3
+            // 
+            this.lineShape3.Name = "lineShape3";
+            this.lineShape3.X1 = 37;
+            this.lineShape3.X2 = 37;
+            this.lineShape3.Y1 = 92;
+            this.lineShape3.Y2 = 284;
+            // 
+            // lineShape2
+            // 
+            this.lineShape2.Name = "lineShape2";
+            this.lineShape2.X1 = 37;
+            this.lineShape2.X2 = 414;
+            this.lineShape2.Y1 = 91;
+            this.lineShape2.Y2 = 91;
+            // 
             // lineShape1
             // 
             this.lineShape1.Name = "lineShape1";
@@ -110,38 +174,6 @@
             this.label2.Size = new System.Drawing.Size(144, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "Detailní informace";
-            // 
-            // lineShape2
-            // 
-            this.lineShape2.Name = "lineShape2";
-            this.lineShape2.X1 = 37;
-            this.lineShape2.X2 = 414;
-            this.lineShape2.Y1 = 91;
-            this.lineShape2.Y2 = 91;
-            // 
-            // lineShape3
-            // 
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.X1 = 37;
-            this.lineShape3.X2 = 37;
-            this.lineShape3.Y1 = 92;
-            this.lineShape3.Y2 = 284;
-            // 
-            // lineShape5
-            // 
-            this.lineShape5.Name = "lineShape5";
-            this.lineShape5.X1 = 37;
-            this.lineShape5.X2 = 414;
-            this.lineShape5.Y1 = 284;
-            this.lineShape5.Y2 = 284;
-            // 
-            // lineShape4
-            // 
-            this.lineShape4.Name = "lineShape4";
-            this.lineShape4.X1 = 414;
-            this.lineShape4.X2 = 414;
-            this.lineShape4.Y1 = 91;
-            this.lineShape4.Y2 = 284;
             // 
             // dostupneLabel
             // 
@@ -224,38 +256,6 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Revize";
             // 
-            // lineShape6
-            // 
-            this.lineShape6.Name = "lineShape6";
-            this.lineShape6.X1 = 36;
-            this.lineShape6.X2 = 413;
-            this.lineShape6.Y1 = 491;
-            this.lineShape6.Y2 = 491;
-            // 
-            // lineShape7
-            // 
-            this.lineShape7.Name = "lineShape7";
-            this.lineShape7.X1 = 36;
-            this.lineShape7.X2 = 36;
-            this.lineShape7.Y1 = 338;
-            this.lineShape7.Y2 = 490;
-            // 
-            // lineShape8
-            // 
-            this.lineShape8.Name = "lineShape8";
-            this.lineShape8.X1 = 36;
-            this.lineShape8.X2 = 413;
-            this.lineShape8.Y1 = 337;
-            this.lineShape8.Y2 = 337;
-            // 
-            // lineShape9
-            // 
-            this.lineShape9.Name = "lineShape9";
-            this.lineShape9.X1 = 413;
-            this.lineShape9.X2 = 413;
-            this.lineShape9.Y1 = 337;
-            this.lineShape9.Y2 = 490;
-            // 
             // Provedllabel
             // 
             this.Provedllabel.AutoSize = true;
@@ -302,6 +302,39 @@
             this.dataGridView1.Size = new System.Drawing.Size(378, 123);
             this.dataGridView1.TabIndex = 14;
             // 
+            // provedlCol
+            // 
+            this.provedlCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.provedlCol.DefaultCellStyle = dataGridViewCellStyle1;
+            this.provedlCol.HeaderText = "";
+            this.provedlCol.Name = "provedlCol";
+            this.provedlCol.Width = 110;
+            // 
+            // DatumCol
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.DatumCol.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DatumCol.HeaderText = "";
+            this.DatumCol.Name = "DatumCol";
+            this.DatumCol.Width = 125;
+            // 
+            // odkazCol
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Navy;
+            this.odkazCol.DefaultCellStyle = dataGridViewCellStyle3;
+            this.odkazCol.HeaderText = "";
+            this.odkazCol.Name = "odkazCol";
+            this.odkazCol.Width = 140;
+            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
@@ -312,39 +345,6 @@
             this.linkLabel1.TabIndex = 15;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "www.learningstore.cz/downloads";
-            // 
-            // provedlCol
-            // 
-            this.provedlCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.provedlCol.DefaultCellStyle = dataGridViewCellStyle4;
-            this.provedlCol.HeaderText = "";
-            this.provedlCol.Name = "provedlCol";
-            this.provedlCol.Width = 110;
-            // 
-            // DatumCol
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.DatumCol.DefaultCellStyle = dataGridViewCellStyle5;
-            this.DatumCol.HeaderText = "";
-            this.DatumCol.Name = "DatumCol";
-            this.DatumCol.Width = 125;
-            // 
-            // odkazCol
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Navy;
-            this.odkazCol.DefaultCellStyle = dataGridViewCellStyle6;
-            this.odkazCol.HeaderText = "";
-            this.odkazCol.Name = "odkazCol";
-            this.odkazCol.Width = 140;
             // 
             // button1
             // 
@@ -380,7 +380,7 @@
             this.Controls.Add(this.nazevLabel);
             this.Controls.Add(this.shapeContainer1);
             this.Name = "MaterialDetail";
-            this.Text = "MaterialDetail";
+            this.Text = "Materiál";
             this.Load += new System.EventHandler(this.MaterialDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

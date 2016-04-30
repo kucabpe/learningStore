@@ -18,7 +18,7 @@ namespace Application
     {
         private MaterialTable MaterialTable;
         private Collection<Material> Materials { get; set; }
-        private Icon treeIcon = new Icon(@"../../detail.ico");
+        private Icon treeIcon = new Icon(@"../../resource/icon/detail.ico");
 
         public MaterialyGridForm()
         {

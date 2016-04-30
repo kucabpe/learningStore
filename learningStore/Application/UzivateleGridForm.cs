@@ -17,7 +17,7 @@ namespace Application
     {
         private Collection<Uzivatel> Uzivatele;
         private UzivatelTable UzivatelTable;
-        private Icon treeIcon = new Icon(@"../../detail.ico");
+        private Icon treeIcon = new Icon(@"../../resource/icon/detail.ico");
 
         public UzivateleGridForm()
         {
@@ -74,6 +74,22 @@ namespace Application
             foreach (var item in Uzivatele)
             {
                 uzivateleGridView.Rows.Add(item.UzId, item.Login, item.Jmeno, item.Prijmeni, item.Email, "********");
+            }
+        }
+
+        private void uzivateleGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void uzivateleGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 6)
+            {
+                int id = (int)uzivateleGridView.Rows[e.RowIndex].Cells["id"].Value;
+
+                UzivatelDetail form = new UzivatelDetail(id, this);
+                form.Show();
             }
         }
 

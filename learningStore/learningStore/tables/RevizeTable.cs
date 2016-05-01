@@ -13,6 +13,7 @@ namespace learningStore.tables
     public class RevizeTable : TableProxy<Revize>
     {
         private static String SQL_SELECT_BYID = "SELECT * FROM revize WHERE rID=@rID;";
+        private static String SQL_SELECT_BYMATERIAL = "SELECT rID [rid] FROM revize WHERE mID=@mID;";
 
         public RevizeTable()
             : base()
@@ -103,6 +104,27 @@ namespace learningStore.tables
             return r;
         }
 
+        public int SelectByMaterial(int mID)
+        {
+            Connecting(null);
+
+            SqlCommand command = db.CreateCommand(SQL_SELECT_BYMATERIAL);
+            command.Parameters.AddWithValue("@mID", mID);
+
+            SqlDataReader reader = db.Select(command);
+
+            int rId = -1;
+
+            if(reader.Read())
+                rId = reader.GetInt32(0);
+
+            reader.Close();
+
+            Disconnecting(null);
+
+            return rId;
+        }
+
         /// <summary>
         /// Procedura 5.5 - Pročištění revizí
         /// </summary>
@@ -138,8 +160,8 @@ namespace learningStore.tables
 
                 r.RId = reader.GetInt32(++i);
                 r.Popis = reader.GetString(++i);
-                r.Material = materialTable.SelectByIdMaterial(reader.GetInt32((++i)));
                 r.Url = reader.GetString(++i);
+                r.Material = materialTable.SelectByIdMaterial(reader.GetInt32((++i)));
                 
                 revize.Add(r);
             }

@@ -85,5 +85,6 @@ namespace Application
             UzivateleGridForm form = getUzivateleGridForm();
             form.Show();
         }
+
     }
 }

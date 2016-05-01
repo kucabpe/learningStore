@@ -10,8 +10,8 @@ namespace learningStore.database.mssql
 {
     public class Database : DatabaseProxy
     {
-        //private static string connectionString = @"data source = dbsys.cs.vsb.cz\STUDENT_SQLS2014; initial catalog = kuc0229; user id = kuc0229; password = TYr9qOCv3F";
-        private static string connectionString = @"Data Source=(localdb)\Projects;Initial Catalog=test;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+        private static string connectionString = @"data source = dbsys.cs.vsb.cz\STUDENT_SQLS2014; initial catalog = kuc0229; user id = kuc0229; password = TYr9qOCv3F";
+        //private static string connectionString = @"Data Source=(localdb)\Projects;Initial Catalog=test;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
 
         private SqlConnection Connection { get; set; }
         private SqlTransaction SqlTransaction { get; set; }

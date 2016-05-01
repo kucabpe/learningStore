@@ -87,13 +87,6 @@ namespace Application
 
             m.Typ = TypBox.Text;
 
-            if (m.Typ != "skripta" && m.Typ != "test" && m.Typ != "projekt" && m.Typ != "ostatní")
-            {
-                Dialog.InvalidInput notify = new Dialog.InvalidInput();
-                notify.ShowDialog();
-                return;
-            }
-
             m.Dokument = DokumentBox.Text; ;
 
             try
